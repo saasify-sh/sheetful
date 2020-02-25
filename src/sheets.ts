@@ -41,7 +41,6 @@ export class SheetController extends Controller {
     }
 
     console.log(doc.title, sheet.title)
-    // test document id: 1qoK-nrybNcgkrSiXPZd7bsZa-4KBuGUZx3WAfV_vnD0
 
     await sheet.loadHeaderRow()
     const { headerValues } = sheet
