@@ -1,6 +1,6 @@
 {
   "name": "sheetful",
-  "openapi": "./openapi.json",
+  "openapi": "./dist/swagger.json",
   "authProviders": {
     "github": {
       "enabled": false
