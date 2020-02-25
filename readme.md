@@ -67,7 +67,8 @@ This example access this public [Google Sheet](https://docs.google.com/spreadshe
     "Type": "Co-op for sale",
     "Image": "https://photos.zillowstatic.com/p_e/IS7e2ppvpy2v7i0000000000.jpg"
   },
-  ...{
+  ...,
+  {
     "Price": "$4,750,000",
     "Address": "169 Columbia Hts APT 5A, Brooklyn, NY 11201",
     "Type": "Condo for sale",
