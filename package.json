@@ -1,0 +1,26 @@
+{
+  "name": "sheetful",
+  "version": "0.1.0",
+  "private": true,
+  "repository": "git@github.com:saasify-sh/sheetful.git",
+  "author": "Saasify <dev@saasify.sh>",
+  "license": "MIT",
+  "main": "index.js",
+  "dependencies": {
+    "koa": "^2.11.0",
+    "koa-bodyparser": "^4.2.1",
+    "koa-compress": "^3.0.0",
+    "koa-router": "^8.0.8",
+    "koa-static": "^5.0.0",
+    "tsoa": "^2.5.13"
+  },
+  "devDependencies": {
+    "@types/koa": "^2.11.2",
+    "@types/koa-bodyparser": "^4.3.0",
+    "@types/koa-compress": "^2.0.9",
+    "@types/koa-router": "^7.4.0",
+    "@types/node": "^13.7.4",
+    "ts-node": "^8.6.2",
+    "typescript": "^3.8.2"
+  }
+}

@@ -58,9 +58,6 @@ typings/
 # dotenv environment variables file
 .env
 
-keys/
-.vscode/
-.keyfile.json
-master.json
+.next/
 
-.next
+dist/

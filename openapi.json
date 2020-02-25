@@ -4,9 +4,9 @@
     "title": "Sheetful"
   },
   "paths": {
-    "/parseIngredients": {
+    "/{project}/{sheet}": {
       "post": {
-        "summary": "Parse Ingredients",
+        "summary": "Parse ingredients",
         "description": "Parses a list of raw ingredient strings into structured JSON.",
         "requestBody": {
           "content": {
