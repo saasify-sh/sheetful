@@ -33,7 +33,7 @@ curl localhost:4000/<document-id>/<sheet-id-or-index> -H 'x-saasify-google-auth-
 curl localhost:4000/1qoK-nrybNcgkrSiXPZd7bsZa-4KBuGUZx3WAfV_vnD0/0 -H 'x-saasify-google-auth-access-token: XXX' | jq .
 ```
 
-This example access this public [Google Sheet](https://docs.google.com/spreadsheets/d/1qoK-nrybNcgkrSiXPZd7bsZa-4KBuGUZx3WAfV_vnD0) and returrns the following JSON (condensed for brevity):
+This example uses a public [Google Sheet](https://docs.google.com/spreadsheets/d/1qoK-nrybNcgkrSiXPZd7bsZa-4KBuGUZx3WAfV_vnD0) and returrns the following JSON:
 
 ```json
 [
@@ -67,7 +67,7 @@ This example access this public [Google Sheet](https://docs.google.com/spreadshe
     "Type": "Co-op for sale",
     "Image": "https://photos.zillowstatic.com/p_e/IS7e2ppvpy2v7i0000000000.jpg"
   },
-  // ...
+  // redacted...
   {
     "Price": "$4,750,000",
     "Address": "169 Columbia Hts APT 5A, Brooklyn, NY 11201",
