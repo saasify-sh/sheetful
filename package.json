@@ -8,6 +8,7 @@
   "scripts": {
     "start": "node build/index.js",
     "dev": "cross-env NODE_ENV=development nodemon --exec ts-node src/index.ts",
+    "predev": "run-s build:routes",
     "clean": "del build dist",
     "build": "run-s build:*",
     "prebuild": "run-s clean",

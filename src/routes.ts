@@ -31,6 +31,7 @@ export function RegisterRoutes(router: KoaRouter) {
       const args = {
         project: { "in": "path", "name": "project", "required": true, "dataType": "string" },
         sheet: { "in": "path", "name": "sheet", "required": true, "dataType": "string" },
+        accessToken: { "in": "header", "name": "x-saasify-google-auth-access-token", "dataType": "string" },
       };
 
       let validatedArgs: any[] = [];
