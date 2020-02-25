@@ -1,11 +1,13 @@
 {
   "compilerOptions": {
+    "module": "commonjs",
+    "allowJs": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "esModuleInterop": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "lib": ["esnext"],
-    "outDir": "dist"
-  }
+    "outDir": "build"
+  },
+  "include": ["src"]
 }

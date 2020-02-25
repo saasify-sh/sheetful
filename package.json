@@ -5,7 +5,15 @@
   "repository": "git@github.com:saasify-sh/sheetful.git",
   "author": "Saasify <dev@saasify.sh>",
   "license": "MIT",
-  "main": "index.js",
+  "scripts": {
+    "start": "ts-node -P tsconfig.json src/index.ts",
+    "now-start": "node build/index.js",
+    "build": "run-s build:*",
+    "prebuild": "del build dist",
+    "build:swagger": "tsoa swagger",
+    "build:routes": "tsoa routes",
+    "build:ts": "tsc"
+  },
   "dependencies": {
     "koa": "^2.11.0",
     "koa-bodyparser": "^4.2.1",
@@ -20,6 +28,8 @@
     "@types/koa-compress": "^2.0.9",
     "@types/koa-router": "^7.4.0",
     "@types/node": "^13.7.4",
+    "del-cli": "^3.0.0",
+    "npm-run-all": "^4.1.5",
     "ts-node": "^8.6.2",
     "typescript": "^3.8.2"
   }
