@@ -26,11 +26,11 @@ export function RegisterRoutes(router: KoaRouter) {
   //  NOTE: If you do not see routes for all of your controllers in this file, then you might not have informed tsoa of where to look
   //      Please look into the "controllerPathGlobs" config option described in the readme: https://github.com/lukeautry/tsoa
   // ###########################################################################################################
-  router.get('/:document/:sheet',
+  router.get('/:documentId/:sheetId',
     async (context: any, next: any) => {
       const args = {
-        document: { "in": "path", "name": "document", "required": true, "dataType": "string" },
-        sheet: { "in": "path", "name": "sheet", "required": true, "dataType": "string" },
+        documentId: { "in": "path", "name": "documentId", "required": true, "dataType": "string" },
+        sheetId: { "in": "path", "name": "sheetId", "required": true, "dataType": "string" },
         accessToken: { "in": "header", "name": "x-saasify-google-auth-access-token", "dataType": "string" },
       };
 
