@@ -86,7 +86,7 @@ Note that you have to replace `XXX` with a valid Google oauth2 access token that
 
 This project exposes a standard Koa server that's transpiled from `src/index.ts` to `build/index.js`.
 
-Here's an example of this service hosted as a ZEIT `now` lambda: `https://sheetful-transitive-bullshit.saasify.now.sh`.
+Here's an example of this service hosted as a ZEIT now lambda: `https://sheetful-transitive-bullshit.saasify.now.sh`.
 
 In terms of best practices, it'd be nice to break up each endpoint into its own lambda, but the potential perf delta is likely negligible.
 
