@@ -31,7 +31,9 @@ export function RegisterRoutes(router: KoaRouter) {
       const args = {
         documentId: { "in": "path", "name": "documentId", "required": true, "dataType": "string" },
         sheetId: { "in": "path", "name": "sheetId", "required": true, "dataType": "string" },
-        accessToken: { "in": "header", "name": "x-saasify-google-auth-access-token", "dataType": "string" },
+        accessToken: { "in": "header", "name": "x-saasify-google-auth-access-token", "required": true, "dataType": "string" },
+        offset: { "default": 0, "in": "query", "name": "offset", "dataType": "double" },
+        limit: { "default": 100, "in": "query", "name": "limit", "dataType": "double" },
       };
 
       let validatedArgs: any[] = [];
