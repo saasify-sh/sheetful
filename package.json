@@ -2,6 +2,7 @@
   "name": "sheetful",
   "version": "0.1.0",
   "private": true,
+  "description": "The easiest way to turn your Google Sheet into a Restful API.",
   "repository": "saasify-sh/sheetful",
   "author": "Saasify <dev@saasify.sh>",
   "license": "MIT",

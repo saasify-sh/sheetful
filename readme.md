@@ -1,12 +1,15 @@
 # Sheetful
 
-> (WIP) The easiest way to turn your Google Sheet into a Restful API.
+> The easiest way to turn your Google Sheet into a Restful API.
 
-Currently dependent on https://github.com/theoephraim/node-google-spreadsheet/pull/306.
+That means you can GET, POST, PUT and DELETE to any spreadsheet with just a few lines of code.
 
-## Hosted Usage
+## Features
 
-TODO
+- 💯 Open source
+- 💪 Use Google Sheets as a simple CMS
+- ⚡ Perfect for low/no-code workflows
+- 🤖 OpenAPI spec is auto-generated from the code
 
 ## Local Usage
 
@@ -86,6 +89,30 @@ This project exposes a standard Koa server that's transpiled from `src/index.ts`
 Here's an example of this service hosted as a ZEIT `now` lambda: `https://sheetful-transitive-bullshit.saasify.now.sh`.
 
 In terms of best practices, it'd be nice to break up each endpoint into its own lambda, but the potential perf delta is likely negligible.
+
+## Why
+
+Google Sheets is an easy, familiar interface for non-developers to manage their content and data.
+
+By treating Google Sheets as a DB / CMS and providing a simple RESTful JSON API on top, we can build thousands of potential no-code workflows.
+
+This creates a DB / CMS with the perfect blend of power and simplicity, enabling creative makers to power all sorts of dynamic websites and apps.
+
+## Commercial Products
+
+These are all commercial versions of this project that are **not open source**.
+
+- [Sheetsu](https://sheetsu.com)
+- [Sheety](https://sheety.co)
+- [SheetAPI](https://sheetapi.co)
+- [SheetDB](https://sheetdb.io)
+
+## Inspiration
+
+- [table2site](https://table2site.com) - Build sites without coding, using an Airtable base as your CMS.
+- [sheet2site](https://sheet2site.com) - Create your own website without writing code using only Google Sheets.
+- [AwesomeTable](https://awesome-table.com) - Use spreadsheets to power dynamic views and apps.
+- [ActionDesk](https://www.actiondesk.io) - A spreadsheet natively connected with apps & data sources.
 
 ## License
 
