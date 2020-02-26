@@ -7,8 +7,8 @@ That means you can GET, POST, PUT and DELETE to any spreadsheet with just a few 
 ## Features
 
 - 💯 Open source
-- 💪 Use Google Sheets as a simple CMS
-- ⚡ Perfect for low/no-code workflows
+- 💪 Use Google Sheets as a simple DB / CMS
+- ⚡ Perfect for low / no-code workflows
 - 🤖 OpenAPI spec is auto-generated from the code
 
 ## Local Usage
@@ -96,7 +96,7 @@ Google Sheets is a simple, familiar interface that allows anyone to easily manag
 
 By treating Google Sheets as a DB / CMS and providing a basic RESTful JSON API on top, we can build thousands of potential no-code workflows.
 
-This results in a DB / CMS with the perfect blend of power and simplicity, enabling creative makers to power all sorts of dynamic websites and apps.
+This results in a DB / CMS with the perfect blend of power and simplicity, enabling creative makers to build all sorts of dynamic websites and apps.
 
 ## Commercial Products
 
