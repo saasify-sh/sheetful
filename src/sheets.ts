@@ -11,7 +11,7 @@ import {
 } from 'tsoa'
 import * as koa from 'koa'
 
-import { GoogleSpreadsheetRow } from 'google-spreadsheet'
+import { GoogleSpreadsheetRow } from '@saasify/google-spreadsheet'
 
 import pMap = require('p-map')
 import pick = require('lodash.pick')

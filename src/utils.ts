@@ -2,7 +2,7 @@ import {
   GoogleSpreadsheet,
   GoogleSpreadsheetWorksheet,
   GoogleSpreadsheetRow
-} from 'google-spreadsheet'
+} from '@saasify/google-spreadsheet'
 
 import * as types from './types'
 
