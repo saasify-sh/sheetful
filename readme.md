@@ -6,7 +6,7 @@ That means you can GET, POST, PUT and DELETE to any spreadsheet with just a few 
 
 ## Features
 
-- 💯 Open source
+- 💯 **Open source**
 - 💪 Use Google Sheets as a simple DB / CMS
 - ⚡ Perfect for low / no-code workflows
 - 🤖 An OpenAPI spec is auto-generated from the code
