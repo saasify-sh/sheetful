@@ -47,17 +47,26 @@ export async function getSheet(
 
 export async function getSheetRows(
   sheet: GoogleSpreadsheetWorksheet,
-  opts?: types.SheetGetRowsOptions
+  opts: types.SheetGetRowsOptions = {}
 ): Promise<object[]> {
   const { headerValues } = sheet
   const rows: GoogleSpreadsheetRow[] = await sheet.getRows(opts)
 
-  return rows.map((row) => {
-    const json = {}
-    for (const header of headerValues) {
-      json[header] = row[header]
-    }
+  return rows
+    .map((row) => {
+      const json = {}
+      for (const header of headerValues) {
+        const value = row[header]
+        const filter = opts.query ? opts.query[header] : undefined
 
-    return json
-  })
+        if (filter !== undefined && value != filter) {
+          return
+        }
+
+        json[header] = value
+      }
+
+      return json
+    })
+    .filter(Boolean)
 }

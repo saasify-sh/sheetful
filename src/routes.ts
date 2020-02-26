@@ -31,6 +31,7 @@ export function RegisterRoutes(router: KoaRouter) {
       const args = {
         documentId: { "in": "path", "name": "documentId", "required": true, "dataType": "string" },
         sheetId: { "in": "path", "name": "sheetId", "required": true, "dataType": "string" },
+        request: { "in": "request", "name": "request", "required": true, "dataType": "object" },
         accessToken: { "in": "header", "name": "x-saasify-google-auth-access-token", "required": true, "dataType": "string" },
         offset: { "default": 0, "in": "query", "name": "offset", "dataType": "double" },
         limit: { "default": 100, "in": "query", "name": "limit", "dataType": "double" },
@@ -47,6 +48,49 @@ export function RegisterRoutes(router: KoaRouter) {
       const controller = new SheetController();
 
       const promise = controller.getRows.apply(controller, validatedArgs as any);
+      return promiseHandler(controller, promise, context, next);
+    });
+  // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+  router.get('/:documentId/:sheetId/info',
+    async (context: any, next: any) => {
+      const args = {
+        documentId: { "in": "path", "name": "documentId", "required": true, "dataType": "string" },
+        sheetId: { "in": "path", "name": "sheetId", "required": true, "dataType": "string" },
+        accessToken: { "in": "header", "name": "x-saasify-google-auth-access-token", "required": true, "dataType": "string" },
+      };
+
+      let validatedArgs: any[] = [];
+      try {
+        validatedArgs = getValidatedArgs(args, context);
+      } catch (error) {
+        context.status = error.status;
+        context.throw(error.status, JSON.stringify({ fields: error.fields }));
+      }
+
+      const controller = new SheetController();
+
+      const promise = controller.getSheetInfo.apply(controller, validatedArgs as any);
+      return promiseHandler(controller, promise, context, next);
+    });
+  // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+  router.get('/:documentId',
+    async (context: any, next: any) => {
+      const args = {
+        documentId: { "in": "path", "name": "documentId", "required": true, "dataType": "string" },
+        accessToken: { "in": "header", "name": "x-saasify-google-auth-access-token", "required": true, "dataType": "string" },
+      };
+
+      let validatedArgs: any[] = [];
+      try {
+        validatedArgs = getValidatedArgs(args, context);
+      } catch (error) {
+        context.status = error.status;
+        context.throw(error.status, JSON.stringify({ fields: error.fields }));
+      }
+
+      const controller = new SheetController();
+
+      const promise = controller.getDocumentInfo.apply(controller, validatedArgs as any);
       return promiseHandler(controller, promise, context, next);
     });
   // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
