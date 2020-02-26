@@ -1,4 +1,4 @@
-export interface IRecordOfAny {
+export interface SheetRow {
   [key: string]: any
 }
 
