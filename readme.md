@@ -9,7 +9,8 @@ That means you can GET, POST, PUT and DELETE to any spreadsheet with just a few 
 - 💯 Open source
 - 💪 Use Google Sheets as a simple DB / CMS
 - ⚡ Perfect for low / no-code workflows
-- 🤖 OpenAPI spec is auto-generated from the code
+- 🤖 An OpenAPI spec is auto-generated from the code
+- 💰 [Saasify](https://saasify.sh) makes it easy to monetize these types of APIs
 
 ## Local Usage
 
