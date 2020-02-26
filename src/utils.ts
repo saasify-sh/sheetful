@@ -21,7 +21,7 @@ export async function getDocument(
     await doc.loadInfo()
   } catch (err) {
     throw {
-      message: `Error loading document "${documentId}": ${err.message}`,
+      message: `Error loading Google document "${documentId}": ${err.message}`,
       status: 400
     }
   }
@@ -42,6 +42,7 @@ export async function getSheet(
     throw { message: `Sheet not found "${sheetId}"`, status: 404 }
   }
 
+  await sheet.loadHeaderRow()
   return sheet
 }
 
@@ -69,4 +70,27 @@ export async function getSheetRows(
       return json
     })
     .filter(Boolean)
+}
+
+export function encodeSheetRow(
+  sheet: GoogleSpreadsheetWorksheet,
+  row: GoogleSpreadsheetRow
+): types.SheetRow {
+  const { headerValues } = sheet
+
+  const json = {}
+  for (const header of headerValues) {
+    const value = row[header]
+
+    json[header] = value
+  }
+
+  return json
+}
+
+export function encodeSheetRows(
+  sheet: GoogleSpreadsheetWorksheet,
+  rows: GoogleSpreadsheetRow[]
+): types.SheetRow[] {
+  return rows.map((row) => encodeSheetRow(sheet, row))
 }

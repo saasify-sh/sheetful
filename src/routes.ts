@@ -9,7 +9,7 @@ import * as KoaRouter from 'koa-router';
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 
 const models: TsoaRoute.Models = {
-  "IRecordOfAny": {
+  "SheetRow": {
     "dataType": "refObject",
     "properties": {
     },
@@ -70,6 +70,123 @@ export function RegisterRoutes(router: KoaRouter) {
       const controller = new SheetController();
 
       const promise = controller.getSheetInfo.apply(controller, validatedArgs as any);
+      return promiseHandler(controller, promise, context, next);
+    });
+  // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+  router.get('/:documentId/:sheetId/:rowId',
+    async (context: any, next: any) => {
+      const args = {
+        documentId: { "in": "path", "name": "documentId", "required": true, "dataType": "string" },
+        sheetId: { "in": "path", "name": "sheetId", "required": true, "dataType": "string" },
+        rowId: { "in": "path", "name": "rowId", "required": true, "dataType": "double" },
+        accessToken: { "in": "header", "name": "x-saasify-google-auth-access-token", "required": true, "dataType": "string" },
+      };
+
+      let validatedArgs: any[] = [];
+      try {
+        validatedArgs = getValidatedArgs(args, context);
+      } catch (error) {
+        context.status = error.status;
+        context.throw(error.status, JSON.stringify({ fields: error.fields }));
+      }
+
+      const controller = new SheetController();
+
+      const promise = controller.getRow.apply(controller, validatedArgs as any);
+      return promiseHandler(controller, promise, context, next);
+    });
+  // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+  router.put('/:documentId/:sheetId/:rowId',
+    async (context: any, next: any) => {
+      const args = {
+        documentId: { "in": "path", "name": "documentId", "required": true, "dataType": "string" },
+        sheetId: { "in": "path", "name": "sheetId", "required": true, "dataType": "string" },
+        rowId: { "in": "path", "name": "rowId", "required": true, "dataType": "double" },
+        body: { "in": "body", "name": "body", "required": true, "ref": "SheetRow" },
+        accessToken: { "in": "header", "name": "x-saasify-google-auth-access-token", "required": true, "dataType": "string" },
+      };
+
+      let validatedArgs: any[] = [];
+      try {
+        validatedArgs = getValidatedArgs(args, context);
+      } catch (error) {
+        context.status = error.status;
+        context.throw(error.status, JSON.stringify({ fields: error.fields }));
+      }
+
+      const controller = new SheetController();
+
+      const promise = controller.updateRow.apply(controller, validatedArgs as any);
+      return promiseHandler(controller, promise, context, next);
+    });
+  // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+  router.put('/:documentId/:sheetId/:rowId/bulk',
+    async (context: any, next: any) => {
+      const args = {
+        documentId: { "in": "path", "name": "documentId", "required": true, "dataType": "string" },
+        sheetId: { "in": "path", "name": "sheetId", "required": true, "dataType": "string" },
+        rowId: { "in": "path", "name": "rowId", "required": true, "dataType": "double" },
+        body: { "in": "body", "name": "body", "required": true, "dataType": "array", "array": { "ref": "SheetRow" } },
+        accessToken: { "in": "header", "name": "x-saasify-google-auth-access-token", "required": true, "dataType": "string" },
+      };
+
+      let validatedArgs: any[] = [];
+      try {
+        validatedArgs = getValidatedArgs(args, context);
+      } catch (error) {
+        context.status = error.status;
+        context.throw(error.status, JSON.stringify({ fields: error.fields }));
+      }
+
+      const controller = new SheetController();
+
+      const promise = controller.updateRowsBulk.apply(controller, validatedArgs as any);
+      return promiseHandler(controller, promise, context, next);
+    });
+  // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+  router.post('/:documentId/:sheetId',
+    async (context: any, next: any) => {
+      const args = {
+        documentId: { "in": "path", "name": "documentId", "required": true, "dataType": "string" },
+        sheetId: { "in": "path", "name": "sheetId", "required": true, "dataType": "string" },
+        body: { "in": "body", "name": "body", "required": true, "ref": "SheetRow" },
+        accessToken: { "in": "header", "name": "x-saasify-google-auth-access-token", "required": true, "dataType": "string" },
+      };
+
+      let validatedArgs: any[] = [];
+      try {
+        validatedArgs = getValidatedArgs(args, context);
+      } catch (error) {
+        context.status = error.status;
+        context.throw(error.status, JSON.stringify({ fields: error.fields }));
+      }
+
+      const controller = new SheetController();
+
+      const promise = controller.createRow.apply(controller, validatedArgs as any);
+      return promiseHandler(controller, promise, context, next);
+    });
+  // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+  router.post('/:documentId/:sheetId/bulk',
+    async (context: any, next: any) => {
+      const args = {
+        documentId: { "in": "path", "name": "documentId", "required": true, "dataType": "string" },
+        sheetId: { "in": "path", "name": "sheetId", "required": true, "dataType": "string" },
+        body: { "in": "body", "name": "body", "required": true, "dataType": "array", "array": { "ref": "SheetRow" } },
+        accessToken: { "in": "header", "name": "x-saasify-google-auth-access-token", "required": true, "dataType": "string" },
+      };
+
+      let validatedArgs: any[] = [];
+      try {
+        validatedArgs = getValidatedArgs(args, context);
+      } catch (error) {
+        context.status = error.status;
+        context.throw(error.status, JSON.stringify({ fields: error.fields }));
+      }
+
+      const controller = new SheetController();
+
+      const promise = controller.createRowsBulk.apply(controller, validatedArgs as any);
       return promiseHandler(controller, promise, context, next);
     });
   // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa

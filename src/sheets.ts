@@ -1,5 +1,19 @@
-import { Controller, Get, Header, Query, Request, Route } from 'tsoa'
+import {
+  Body,
+  Controller,
+  Get,
+  Header,
+  Query,
+  Post,
+  Put,
+  Request,
+  Route
+} from 'tsoa'
 import * as koa from 'koa'
+
+import { GoogleSpreadsheetRow } from 'google-spreadsheet'
+
+import pMap = require('p-map')
 import pick = require('lodash.pick')
 
 import { SheetRow } from './types'
@@ -28,7 +42,6 @@ export class SheetController extends Controller {
       limit
     })
 
-    await sheet.loadHeaderRow()
     return utils.getSheetRows(sheet, { offset, limit, query })
   }
 
@@ -46,7 +59,6 @@ export class SheetController extends Controller {
       sheet: sheet.title
     })
 
-    await sheet.loadHeaderRow()
     return pick(sheet, [
       'sheetId',
       'title',
@@ -63,28 +75,132 @@ export class SheetController extends Controller {
     ])
   }
 
-  @Get('{documentId}/{sheetId}/{rowNumber}')
+  @Get('{documentId}/{sheetId}/{rowId}')
   public async getRow(
     documentId: string,
     sheetId: string,
-    rowNumber: number,
+    rowId: number,
     @Header('x-saasify-google-auth-access-token') accessToken: string
   ): Promise<SheetRow> {
     const doc = await utils.getDocument(documentId, accessToken)
     const sheet = await utils.getSheet(doc, sheetId)
 
-    console.log('GET', `/${documentId}/${sheetId}`, {
+    console.log('GET', `/${documentId}/${sheetId}/${rowId}`, {
       doc: doc.title,
-      sheet: sheet.title,
-      rowNumber
+      sheet: sheet.title
     })
 
-    await sheet.loadHeaderRow()
     const rows = await utils.getSheetRows(sheet, {
-      offset: rowNumber,
+      offset: rowId,
       limit: 1
     })
+
     return rows[0]
+  }
+
+  @Put('{documentId}/{sheetId}/{rowId}')
+  public async updateRow(
+    documentId: string,
+    sheetId: string,
+    rowId: number,
+    @Body() body: SheetRow,
+    @Header('x-saasify-google-auth-access-token') accessToken: string
+  ): Promise<SheetRow> {
+    const doc = await utils.getDocument(documentId, accessToken)
+    const sheet = await utils.getSheet(doc, sheetId)
+
+    console.log('PUT', `/${documentId}/${sheetId}/${rowId}`, {
+      doc: doc.title,
+      sheet: sheet.title,
+      body
+    })
+
+    const gRows = await sheet.getRows({
+      offset: rowId,
+      limit: 1
+    })
+
+    const gRow = gRows[0]
+    const row = body
+    for (const key of sheet.headerValues) {
+      gRow[key] = row[key]
+    }
+
+    await gRow.save()
+    return utils.encodeSheetRow(sheet, gRow)
+  }
+
+  @Put('{documentId}/{sheetId}/{rowId}/bulk')
+  public async updateRowsBulk(
+    documentId: string,
+    sheetId: string,
+    rowId: number,
+    @Body() body: SheetRow[],
+    @Header('x-saasify-google-auth-access-token') accessToken: string
+  ): Promise<void> {
+    const doc = await utils.getDocument(documentId, accessToken)
+    const sheet = await utils.getSheet(doc, sheetId)
+
+    console.log('PUT', `/${documentId}/${sheetId}/${rowId}/bulk`, {
+      doc: doc.title,
+      sheet: sheet.title,
+      body
+    })
+
+    const gRows: GoogleSpreadsheetRow[] = await sheet.getRows({
+      offset: rowId,
+      limit: body.length
+    })
+
+    for (let i = 0; i < gRows.length; ++i) {
+      const gRow = gRows[i]
+      const row = body[i]
+
+      for (const key of sheet.headerValues) {
+        gRow[key] = row[key]
+      }
+    }
+
+    await pMap(gRows, (gRow) => gRow.save(), { concurrency: 4 })
+  }
+
+  @Post('{documentId}/{sheetId}')
+  public async createRow(
+    documentId: string,
+    sheetId: string,
+    @Body() body: SheetRow,
+    @Header('x-saasify-google-auth-access-token') accessToken: string
+  ): Promise<SheetRow> {
+    const doc = await utils.getDocument(documentId, accessToken)
+    const sheet = await utils.getSheet(doc, sheetId)
+
+    console.log('POST', `/${documentId}/${sheetId}`, {
+      doc: doc.title,
+      sheet: sheet.title,
+      body
+    })
+
+    const gRow = await sheet.addRow(body)
+    return utils.encodeSheetRow(sheet, gRow)
+  }
+
+  @Post('{documentId}/{sheetId}/bulk')
+  public async createRowsBulk(
+    documentId: string,
+    sheetId: string,
+    @Body() body: SheetRow[],
+    @Header('x-saasify-google-auth-access-token') accessToken: string
+  ): Promise<void> {
+    const doc = await utils.getDocument(documentId, accessToken)
+    const sheet = await utils.getSheet(doc, sheetId)
+
+    console.log('POST', `/${documentId}/${sheetId}/bulk`, {
+      doc: doc.title,
+      sheet: sheet.title,
+      body
+    })
+
+    await sheet.addRows(body)
   }
 
   @Get('{documentId}')

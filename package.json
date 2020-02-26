@@ -24,6 +24,7 @@
     "koa-router": "^8.0.8",
     "koa-static": "^5.0.0",
     "lodash.pick": "^4.4.0",
+    "p-map": "^3.0.0",
     "tsoa": "^2.5.13"
   },
   "devDependencies": {
@@ -33,6 +34,7 @@
     "@types/koa-router": "^7.4.0",
     "@types/lodash.pick": "^4.4.6",
     "@types/node": "^13.7.4",
+    "@types/p-map": "^2.0.0",
     "cross-env": "^7.0.0",
     "del-cli": "^3.0.0",
     "nodemon": "^2.0.2",
