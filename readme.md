@@ -92,11 +92,11 @@ In terms of best practices, it'd be nice to break up each endpoint into its own 
 
 ## Why
 
-Google Sheets is an easy, familiar interface for non-developers to manage their content and data.
+Google Sheets is a simple, familiar interface that allows anyone to easily manage their data and content.
 
-By treating Google Sheets as a DB / CMS and providing a simple RESTful JSON API on top, we can build thousands of potential no-code workflows.
+By treating Google Sheets as a DB / CMS and providing a basic RESTful JSON API on top, we can build thousands of potential no-code workflows.
 
-This creates a DB / CMS with the perfect blend of power and simplicity, enabling creative makers to power all sorts of dynamic websites and apps.
+This results in a DB / CMS with the perfect blend of power and simplicity, enabling creative makers to power all sorts of dynamic websites and apps.
 
 ## Commercial Products
 
