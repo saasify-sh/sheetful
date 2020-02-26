@@ -23,7 +23,6 @@
     "koa-bodyparser": "^4.2.1",
     "koa-compress": "^3.0.0",
     "koa-router": "^8.0.8",
-    "koa-static": "^5.0.0",
     "lodash.pick": "^4.4.0",
     "p-map": "^3.0.0",
     "tsoa": "^2.5.13"
