@@ -16,7 +16,7 @@ import { GoogleSpreadsheetRow } from 'google-spreadsheet'
 import pMap = require('p-map')
 import pick = require('lodash.pick')
 
-import { SheetRow } from './types'
+import { Any, SheetRow } from './types'
 import * as utils from './utils'
 
 @Route()
@@ -50,7 +50,7 @@ export class SheetController extends Controller {
     documentId: string,
     sheetId: string,
     @Header('x-saasify-google-auth-access-token') accessToken: string
-  ): Promise<object> {
+  ): Promise<Any> {
     const doc = await utils.getDocument(documentId, accessToken)
     const sheet = await utils.getSheet(doc, sheetId)
 
@@ -207,7 +207,7 @@ export class SheetController extends Controller {
   public async getDocumentInfo(
     documentId: string,
     @Header('x-saasify-google-auth-access-token') accessToken: string
-  ): Promise<object> {
+  ): Promise<Any> {
     const doc = await utils.getDocument(documentId, accessToken)
 
     console.log('GET', `/${documentId}`, { doc: doc.title })

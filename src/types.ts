@@ -1,3 +1,7 @@
+export interface Any {
+  [key: string]: any
+}
+
 export interface SheetRow {
   [key: string]: any
 }
