@@ -64,6 +64,12 @@
     "name": "Sheetful",
     "heading": "**Turn your Google Sheet into an API**",
     "subheading": "The power of a database with the simplicity of Google Sheets.",
-    "repo": "https://github.com/saasify-sh/sheetful"
+    "repo": "https://github.com/saasify-sh/sheetful",
+    "theme": {
+      "name": "waves",
+      "buttonStyle": "rounded",
+      "color": "#ff6e6c",
+      "codeBlockDark": true
+    }
   }
 }
