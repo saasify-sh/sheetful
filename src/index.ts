@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 import './sheets'
 
 import * as http from 'http'

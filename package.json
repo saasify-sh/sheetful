@@ -6,6 +6,9 @@
   "repository": "saasify-sh/sheetful",
   "author": "Saasify <dev@saasify.sh>",
   "license": "MIT",
+  "engines": {
+    "node": ">=8"
+  },
   "scripts": {
     "start": "node build/index.js",
     "dev": "cross-env NODE_ENV=development nodemon --exec ts-node src/index.ts",
@@ -15,10 +18,12 @@
     "prebuild": "run-s clean",
     "build:swagger": "tsoa swagger",
     "build:routes": "tsoa routes",
-    "build:ts": "tsc"
+    "build:ts": "tsc",
+    "test": "run-s build"
   },
   "dependencies": {
     "@saasify/google-spreadsheet": "^3.1.0",
+    "dotenv": "^8.2.0",
     "koa": "^2.11.0",
     "koa-bodyparser": "^4.2.1",
     "koa-compress": "^3.0.0",

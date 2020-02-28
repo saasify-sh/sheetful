@@ -26,7 +26,7 @@ export class SheetController extends Controller {
     documentId: string,
     sheetId: string,
     @Request() request: koa.Request,
-    @Header('x-saasify-google-auth-access-token') accessToken: string,
+    @Header('x-saasify-google-auth-access-token') accessToken?: string,
     @Query() offset: number = 0,
     @Query() limit: number = 100
   ): Promise<SheetRow[]> {
@@ -49,7 +49,7 @@ export class SheetController extends Controller {
   public async getSheetInfo(
     documentId: string,
     sheetId: string,
-    @Header('x-saasify-google-auth-access-token') accessToken: string
+    @Header('x-saasify-google-auth-access-token') accessToken?: string
   ): Promise<Any> {
     const doc = await utils.getDocument(documentId, accessToken)
     const sheet = await utils.getSheet(doc, sheetId)
@@ -80,7 +80,7 @@ export class SheetController extends Controller {
     documentId: string,
     sheetId: string,
     rowId: number,
-    @Header('x-saasify-google-auth-access-token') accessToken: string
+    @Header('x-saasify-google-auth-access-token') accessToken?: string
   ): Promise<SheetRow> {
     const doc = await utils.getDocument(documentId, accessToken)
     const sheet = await utils.getSheet(doc, sheetId)
@@ -104,7 +104,7 @@ export class SheetController extends Controller {
     sheetId: string,
     rowId: number,
     @Body() body: SheetRow,
-    @Header('x-saasify-google-auth-access-token') accessToken: string
+    @Header('x-saasify-google-auth-access-token') accessToken?: string
   ): Promise<SheetRow> {
     const doc = await utils.getDocument(documentId, accessToken)
     const sheet = await utils.getSheet(doc, sheetId)
@@ -136,7 +136,7 @@ export class SheetController extends Controller {
     sheetId: string,
     rowId: number,
     @Body() body: SheetRow[],
-    @Header('x-saasify-google-auth-access-token') accessToken: string
+    @Header('x-saasify-google-auth-access-token') accessToken?: string
   ): Promise<void> {
     const doc = await utils.getDocument(documentId, accessToken)
     const sheet = await utils.getSheet(doc, sheetId)
@@ -169,7 +169,7 @@ export class SheetController extends Controller {
     documentId: string,
     sheetId: string,
     @Body() body: SheetRow,
-    @Header('x-saasify-google-auth-access-token') accessToken: string
+    @Header('x-saasify-google-auth-access-token') accessToken?: string
   ): Promise<SheetRow> {
     const doc = await utils.getDocument(documentId, accessToken)
     const sheet = await utils.getSheet(doc, sheetId)
@@ -189,7 +189,7 @@ export class SheetController extends Controller {
     documentId: string,
     sheetId: string,
     @Body() body: SheetRow[],
-    @Header('x-saasify-google-auth-access-token') accessToken: string
+    @Header('x-saasify-google-auth-access-token') accessToken?: string
   ): Promise<void> {
     const doc = await utils.getDocument(documentId, accessToken)
     const sheet = await utils.getSheet(doc, sheetId)
@@ -206,7 +206,7 @@ export class SheetController extends Controller {
   @Get('{documentId}')
   public async getDocumentInfo(
     documentId: string,
-    @Header('x-saasify-google-auth-access-token') accessToken: string
+    @Header('x-saasify-google-auth-access-token') accessToken?: string
   ): Promise<Any> {
     const doc = await utils.getDocument(documentId, accessToken)
 

@@ -4,18 +4,24 @@ import {
   GoogleSpreadsheetRow
 } from '@saasify/google-spreadsheet'
 
+import * as env from './env'
 import * as types from './types'
 
 export async function getDocument(
   documentId: string,
-  accessToken: string
+  accessToken?: string
 ): Promise<GoogleSpreadsheet> {
-  if (!accessToken) {
-    throw { message: 'Missing required access token', status: 400 }
+  if (!accessToken && !env.GOOGLE_API_KEY) {
+    throw { message: 'Missing required oauth access token', status: 401 }
   }
 
   const doc = new GoogleSpreadsheet(documentId)
-  doc.useAccessToken(accessToken)
+
+  if (accessToken) {
+    doc.useAccessToken(accessToken)
+  } else {
+    doc.useApiKey(env.GOOGLE_API_KEY)
+  }
 
   try {
     await doc.loadInfo()

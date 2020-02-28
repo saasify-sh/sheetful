@@ -4,6 +4,8 @@
 
 That means you can GET, POST, PUT and DELETE to any spreadsheet with just a few lines of code.
 
+[![Build Status](https://travis-ci.com/saasify-sh/sheetful.svg?branch=master)](https://travis-ci.com/saasify-sh/sheetful) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+
 ## Features
 
 - 💯 **Open source**
@@ -20,6 +22,9 @@ yarn
 ```
 
 ```bash
+# configure your GOOGLE_API_KEY
+echo GOOGLE_API_KEY='XXX' > .env
+
 # to run the development server
 yarn dev
 
@@ -31,13 +36,15 @@ yarn start
 Now you can access any of your Google Sheets via simple HTTP REST commands:
 
 ```bash
-curl localhost:4000/<document-id>/<sheet-id-or-index> -H 'x-saasify-google-auth-access-token: XXX' | jq .
+curl localhost:4000/<document-id>/<sheet-id-or-index> | jq .
 
 # for example
-curl localhost:4000/1qoK-nrybNcgkrSiXPZd7bsZa-4KBuGUZx3WAfV_vnD0/0 -H 'x-saasify-google-auth-access-token: XXX' | jq .
+curl localhost:4000/1qoK-nrybNcgkrSiXPZd7bsZa-4KBuGUZx3WAfV_vnD0/0 | jq .
 ```
 
-This example uses a public [Google Sheet](https://docs.google.com/spreadsheets/d/1qoK-nrybNcgkrSiXPZd7bsZa-4KBuGUZx3WAfV_vnD0) and returrns the following JSON:
+This example uses a public [Google Sheet](https://docs.google.com/spreadsheets/d/1qoK-nrybNcgkrSiXPZd7bsZa-4KBuGUZx3WAfV_vnD0) and assumes that you've provided a `GOOGLE_API_KEY` environment variable (see below for details).
+
+This example returrns the following JSON:
 
 ```json
 [
@@ -81,7 +88,44 @@ This example uses a public [Google Sheet](https://docs.google.com/spreadsheets/d
 ]
 ```
 
-Note that you have to replace `XXX` with a valid Google oauth2 access token that's been granted the `https://www.googleapis.com/auth/spreadsheets` scope.
+## Authentication
+
+All endpoints support two forms of authentication depending on your use case.
+
+If an oauth access token is provided for a given call, it will take precedence. Otherwise, the default is to use an API key if `process.env.GOOGLE_API_KEY` exists.
+
+If neither form of authentication is provided, the server will return a `401 Unauthorized` error.
+
+#### API Key
+
+This allows **read-only access to public Google Sheets** and is great for getting started.
+
+See [this guide](https://theoephraim.github.io/node-google-spreadsheet/#/getting-started/authentication?id=api-key) for acquiring an API key.
+
+You can then add your `GOOGLE_API_KEY` as an environment variable directly or via `.env` which will be loaded by the server.
+
+Be careful to never check your API key into version control.
+
+#### OAuth2
+
+This is the most flexible and powerful form of authentication.
+
+It allows your API to **read and write a user's private Google Sheets**.
+
+**OAuth access tokens take precedence over API keys**.
+
+All endpoints accept an optional header `x-saasify-google-auth-access-token` which takes a valid Google oauth2 access token that's been granted the granted the [https://www.googleapis.com/auth/spreadsheets](https://www.googleapis.com/auth/spreadsheets) scope.
+
+Here are the same examples as above only this time using oauth (replace XXX with your access token).
+
+```bash
+curl localhost:4000/<document-id>/<sheet-id-or-index> -H 'x-saasify-google-auth-access-token: XXX' | jq .
+
+# for example
+curl localhost:4000/1qoK-nrybNcgkrSiXPZd7bsZa-4KBuGUZx3WAfV_vnD0/0 -H 'x-saasify-google-auth-access-token: XXX' | jq .
+```
+
+Be careful to never check your oauth access tokens into version control.
 
 ## Deploying to ZEIT now
 
