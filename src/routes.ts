@@ -39,7 +39,7 @@ export function RegisterRoutes(router: KoaRouter) {
         documentId: { "in": "path", "name": "documentId", "required": true, "dataType": "string" },
         sheetId: { "in": "path", "name": "sheetId", "required": true, "dataType": "string" },
         request: { "in": "request", "name": "request", "required": true, "dataType": "object" },
-        accessToken: { "in": "header", "name": "x-saasify-google-auth-access-token", "dataType": "string" },
+        accessToken: { "in": "header", "name": "x-google-access-token", "dataType": "string" },
         offset: { "default": 0, "in": "query", "name": "offset", "dataType": "double" },
         limit: { "default": 100, "in": "query", "name": "limit", "dataType": "double" },
       };
@@ -63,7 +63,7 @@ export function RegisterRoutes(router: KoaRouter) {
       const args = {
         documentId: { "in": "path", "name": "documentId", "required": true, "dataType": "string" },
         sheetId: { "in": "path", "name": "sheetId", "required": true, "dataType": "string" },
-        accessToken: { "in": "header", "name": "x-saasify-google-auth-access-token", "dataType": "string" },
+        accessToken: { "in": "header", "name": "x-google-access-token", "dataType": "string" },
       };
 
       let validatedArgs: any[] = [];
@@ -86,7 +86,7 @@ export function RegisterRoutes(router: KoaRouter) {
         documentId: { "in": "path", "name": "documentId", "required": true, "dataType": "string" },
         sheetId: { "in": "path", "name": "sheetId", "required": true, "dataType": "string" },
         rowId: { "in": "path", "name": "rowId", "required": true, "dataType": "double" },
-        accessToken: { "in": "header", "name": "x-saasify-google-auth-access-token", "dataType": "string" },
+        accessToken: { "in": "header", "name": "x-google-access-token", "dataType": "string" },
       };
 
       let validatedArgs: any[] = [];
@@ -110,7 +110,7 @@ export function RegisterRoutes(router: KoaRouter) {
         sheetId: { "in": "path", "name": "sheetId", "required": true, "dataType": "string" },
         rowId: { "in": "path", "name": "rowId", "required": true, "dataType": "double" },
         body: { "in": "body", "name": "body", "required": true, "ref": "SheetRow" },
-        accessToken: { "in": "header", "name": "x-saasify-google-auth-access-token", "dataType": "string" },
+        accessToken: { "in": "header", "name": "x-google-access-token", "dataType": "string" },
       };
 
       let validatedArgs: any[] = [];
@@ -134,7 +134,7 @@ export function RegisterRoutes(router: KoaRouter) {
         sheetId: { "in": "path", "name": "sheetId", "required": true, "dataType": "string" },
         rowId: { "in": "path", "name": "rowId", "required": true, "dataType": "double" },
         body: { "in": "body", "name": "body", "required": true, "dataType": "array", "array": { "ref": "SheetRow" } },
-        accessToken: { "in": "header", "name": "x-saasify-google-auth-access-token", "dataType": "string" },
+        accessToken: { "in": "header", "name": "x-google-access-token", "dataType": "string" },
       };
 
       let validatedArgs: any[] = [];
@@ -157,7 +157,7 @@ export function RegisterRoutes(router: KoaRouter) {
         documentId: { "in": "path", "name": "documentId", "required": true, "dataType": "string" },
         sheetId: { "in": "path", "name": "sheetId", "required": true, "dataType": "string" },
         body: { "in": "body", "name": "body", "required": true, "ref": "SheetRow" },
-        accessToken: { "in": "header", "name": "x-saasify-google-auth-access-token", "dataType": "string" },
+        accessToken: { "in": "header", "name": "x-google-access-token", "dataType": "string" },
       };
 
       let validatedArgs: any[] = [];
@@ -180,7 +180,7 @@ export function RegisterRoutes(router: KoaRouter) {
         documentId: { "in": "path", "name": "documentId", "required": true, "dataType": "string" },
         sheetId: { "in": "path", "name": "sheetId", "required": true, "dataType": "string" },
         body: { "in": "body", "name": "body", "required": true, "dataType": "array", "array": { "ref": "SheetRow" } },
-        accessToken: { "in": "header", "name": "x-saasify-google-auth-access-token", "dataType": "string" },
+        accessToken: { "in": "header", "name": "x-google-access-token", "dataType": "string" },
       };
 
       let validatedArgs: any[] = [];
@@ -201,7 +201,7 @@ export function RegisterRoutes(router: KoaRouter) {
     async (context: any, next: any) => {
       const args = {
         documentId: { "in": "path", "name": "documentId", "required": true, "dataType": "string" },
-        accessToken: { "in": "header", "name": "x-saasify-google-auth-access-token", "dataType": "string" },
+        accessToken: { "in": "header", "name": "x-google-access-token", "dataType": "string" },
       };
 
       let validatedArgs: any[] = [];

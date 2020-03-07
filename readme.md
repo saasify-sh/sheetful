@@ -114,22 +114,22 @@ It allows your API to **read and write a user's private Google Sheets**.
 
 **OAuth access tokens take precedence over API keys**.
 
-All endpoints accept an optional header `x-saasify-google-auth-access-token` which takes a valid Google oauth2 access token that's been granted the granted the [https://www.googleapis.com/auth/spreadsheets](https://www.googleapis.com/auth/spreadsheets) scope.
+All endpoints accept an optional header `x-google-access-token` which takes a valid Google oauth2 access token that's been granted the granted the [https://www.googleapis.com/auth/spreadsheets](https://www.googleapis.com/auth/spreadsheets) scope.
 
 Here are the same examples as above only this time using oauth (replace XXX with your access token).
 
 ```bash
-curl localhost:4000/<document-id>/<sheet-id-or-index> -H 'x-saasify-google-auth-access-token: XXX' | jq .
+curl localhost:4000/<document-id>/<sheet-id-or-index> -H 'x-google-access-token: XXX' | jq .
 
 # for example
-curl localhost:4000/1qoK-nrybNcgkrSiXPZd7bsZa-4KBuGUZx3WAfV_vnD0/0 -H 'x-saasify-google-auth-access-token: XXX' | jq .
+curl localhost:4000/1qoK-nrybNcgkrSiXPZd7bsZa-4KBuGUZx3WAfV_vnD0/0 -H 'x-google-access-token: XXX' | jq .
 ```
 
 Be careful to never check your oauth access tokens into version control.
 
 ## Deploying to ZEIT now
 
-This project exposes a standard Koa server that's transpiled from `src/index.ts` to `build/index.js`.
+This project exposes a standard Koa server that's transpiled from `src/server.ts` to `build/server.js`.
 
 Here's an example of this service hosted as a ZEIT now lambda: `https://sheetful-transitive-bullshit.saasify.now.sh`.
 

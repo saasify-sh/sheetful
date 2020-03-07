@@ -10,8 +10,8 @@
     "node": ">=8"
   },
   "scripts": {
-    "start": "node build/index.js",
-    "dev": "cross-env NODE_ENV=development nodemon --exec ts-node src/index.ts",
+    "start": "node build/server.js",
+    "dev": "cross-env NODE_ENV=development nodemon --exec ts-node src/server.ts",
     "predev": "run-s build:routes",
     "clean": "del build dist",
     "build": "run-s build:*",
@@ -19,7 +19,10 @@
     "build:swagger": "tsoa swagger",
     "build:routes": "tsoa routes",
     "build:ts": "tsc",
-    "test": "run-s build"
+    "test": "run-s build",
+    "deploy": "now",
+    "predeploy": "run-s build",
+    "postdeploy": "now rm --safe sheetful"
   },
   "dependencies": {
     "@saasify/google-spreadsheet": "^3.1.0",
