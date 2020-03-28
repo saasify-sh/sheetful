@@ -42,9 +42,9 @@ curl localhost:4000/<document-id>/<sheet-id-or-index> | jq .
 curl localhost:4000/1qoK-nrybNcgkrSiXPZd7bsZa-4KBuGUZx3WAfV_vnD0/0 | jq .
 ```
 
-This example uses returns all rows in a public [Google Sheet](https://docs.google.com/spreadsheets/d/1qoK-nrybNcgkrSiXPZd7bsZa-4KBuGUZx3WAfV_vnD0) as JSON. Note that it assumes you've provided a `GOOGLE_API_KEY` environment variable (see below for details).
+This example returns all rows in a public [Google Sheet](https://docs.google.com/spreadsheets/d/1qoK-nrybNcgkrSiXPZd7bsZa-4KBuGUZx3WAfV_vnD0) as JSON. Note that it assumes you've provided a `GOOGLE_API_KEY` environment variable (see below for details).
 
-It returns the following JSON:
+Example output:
 
 ```json
 [
