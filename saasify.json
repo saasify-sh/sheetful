@@ -1,53 +1,27 @@
 {
   "name": "sheetful",
   "openapi": "./dist/swagger.json",
-  "services": [
-    {
-      "path": "/{documentId}/{sheetId}",
-      "examples": [
-        {
-          "name": "Basic",
-          "input": {
-            "documentId": "1qoK-nrybNcgkrSiXPZd7bsZa-4KBuGUZx3WAfV_vnD0",
-            "sheetId": "0",
-            "limit": 5
-          },
-          "output": [
-            {
-              "Price": "$300,000",
-              "Address": "45 Grace Ct # 3D, Brooklyn, NY 11201",
-              "Type": "Co-op for sale",
-              "Image": "https://photos.zillowstatic.com/p_e/ISble2jd41y6ry0000000000.jpg"
-            },
-            {
-              "Price": "",
-              "Address": "81 Pierrepont St, Brooklyn, NY 11201",
-              "Type": "Townhouse for sale",
-              "Image": "https://photos.zillowstatic.com/p_e/IS3r1ehrg64gph1000000000.jpg"
-            },
-            {
-              "Price": "$849,000",
-              "Address": "251 Pacific St APT 11, Brooklyn, NY 11201",
-              "Type": "Co-op for sale",
-              "Image": "https://photos.zillowstatic.com/p_e/ISzv6yuetksjfs0000000000.jpg"
-            },
-            {
-              "Price": "",
-              "Address": "360 Furman St APT 1216, Brooklyn, NY 11201",
-              "Type": "Condo for sale",
-              "Image": "https://photos.zillowstatic.com/p_e/ISadsnq9f2ahh51000000000.jpg"
-            },
-            {
-              "Price": "$999,000",
-              "Address": "114 Clinton St APT 5C, Brooklyn, NY 11201",
-              "Type": "Co-op for sale",
-              "Image": "https://photos.zillowstatic.com/p_e/IS7e2ppvpy2v7i0000000000.jpg"
-            }
-          ]
-        }
-      ]
+  "saas": {
+    "name": "Sheetful",
+    "heading": "**Turn your Google Sheet into an API**",
+    "subheading": "The power of a database with the simplicity of Google Sheets.",
+    "repo": "https://github.com/saasify-sh/sheetful",
+    "readme": "docs.md",
+    "theme": {
+      "name": "waves",
+      "buttonStyle": "rounded",
+      "color": "#ff6e6c",
+      "codeBlockDark": true
+    },
+    "sections": {
+      "pricing": {
+        "showMeteredBilling": false
+      },
+      "hero": {
+        "cta": "Get started for free"
+      }
     }
-  ],
+  },
   "authProviders": {
     "github": {
       "enabled": false
@@ -58,18 +32,6 @@
     },
     "default": {
       "enabled": false
-    }
-  },
-  "saas": {
-    "name": "Sheetful",
-    "heading": "**Turn your Google Sheet into an API**",
-    "subheading": "The power of a database with the simplicity of Google Sheets.",
-    "repo": "https://github.com/saasify-sh/sheetful",
-    "theme": {
-      "name": "waves",
-      "buttonStyle": "rounded",
-      "color": "#ff6e6c",
-      "codeBlockDark": true
     }
   }
 }
